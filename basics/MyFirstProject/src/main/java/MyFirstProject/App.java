@@ -51,10 +51,16 @@ public class App {
         }
         //**************************************************************
         public static void clock(){
+            int currentSecond = 0;
             while(true) {
                 LocalDateTime now = LocalDateTime.now();
                 String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-                System.out.println(time);
+                int second = now.getSecond();
+
+                if(currentSecond!=second){
+                    System.out.println(time);
+                }
+                currentSecond=second;
             }
         }
 
