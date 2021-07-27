@@ -4,18 +4,22 @@
 
  package basiclibrary;
 
- import java.util.Arrays;
+ import java.io.File;
+ import java.io.FileNotFoundException;
+ import java.util.*;
 
  public class App {
      static String getGreeting() {
          return "Hello world.";
      }
 
-     public static void main(String[] args) {
+     public static void main(String[] args)  {
+
+
          System.out.println(getGreeting());
          System.out.println("");
          int n = 3;
-         int[] newArray2 ={1,3,7};
+         int[] newArray2 ={1,2,7,4,8};
 
          // Daily average temperatures for Seattle, October 1-28 2017
          int[][] weeklyMonthTemperatures = {
@@ -25,14 +29,101 @@
                  {65, 56, 55, 52, 55, 62, 57}
          };
 
+
          System.out.println("roll: "+Arrays.toString(roll(n)));
          System.out.println("true or false?  " + containsDuplicates(newArray2));
          System.out.println("average:  "+averages(newArray2));
          System.out.println("arrayOfArrays: " +Arrays.toString(arrayOfArrays(weeklyMonthTemperatures)));
+
+         weatherData(weeklyMonthTemperatures);
+
+         List<String> votes = new ArrayList<>();
+         votes.add("Bush");
+         votes.add("Bush");
+         votes.add("Bush");
+         votes.add("Shrub");
+         votes.add("Hedge");
+         votes.add("Shrub");
+         votes.add("Bush");
+         votes.add("Hedge");
+         votes.add("Bush");
+
+         String winner = tally(votes);
+         System.out.println(winner + " received the most votes!");
+
      }
+     //*******************************************************************
+     public static String tally(List arr) {
 
-     // **************************************************
+         // Create HashMap to store word and it's frequency
+         HashMap<String, Integer> names = new HashMap<String, Integer>();
 
+         // Iterate through array of words
+         for (int i = 0; i < arr.size(); i++) {
+             // If word already exist in HashMap then increase it's count by 1
+             if (names.containsKey(arr.get(i))) {
+                 names.put((String) arr.get(i), names.get(arr.get(i)) + 1);
+             }
+             // Otherwise add word to HashMap
+             else {
+                 names.put((String) arr.get(i), 1);
+             }
+         }
+
+         // Create set to iterate over HashMap
+         Set<Map.Entry<String, Integer> > set = names.entrySet();
+         String key = "";
+         int value = 0;
+
+         for (Map.Entry<String, Integer> me : set) {
+             // Check for word having highest frequency
+             if (me.getValue() > value) {
+                 value = me.getValue();
+                 key = me.getKey();
+             }
+         }
+
+         // Return word having highest frequency
+         return key;
+     }
+     //*******************************************************
+        public static List<String> weatherData(int[][] arr){
+            Set<Integer> set = new HashSet<Integer>();
+            int minValue=arr[0][0];
+            int maximumValue=arr[0][0];
+            for (int i=0 ;i< arr.length;i++){
+                for (int x=0;x< arr[i].length;x++){
+                    if(minValue>arr[i][x]){
+                        minValue=arr[i][x];
+                    }else if(maximumValue<arr[i][x]){
+                        maximumValue=arr[i][x];
+                    }
+
+                    set.add(arr[i][x]);
+                }
+            }
+            System.out.println("High: " +maximumValue);
+            System.out.println("Low: "+minValue);
+
+            List<Integer> list = new ArrayList<Integer>(set);
+            Collections.sort(list);
+
+            int currentValue = list.get(0);//51
+            List<String> stringArray = new ArrayList<String>();
+             for(int i=0; i<list.size();i++){
+             if(list.get(i) != currentValue){//51, 52, 54
+                 for(int j=currentValue; j < list.get(i);j++){
+                     String str= "Never saw temperature: " + j;
+                     stringArray.add(str);
+                     System.out.println("Never saw temperature: " + j);
+                 }
+             }
+                 currentValue = list.get(i)+1; //63
+            }
+//            System.out.println("======================="+(stringArray));
+            return stringArray;
+            }
+     // ********************************************************
      public static int[] roll(int n) {
          int max = 6;
          int min = 1;

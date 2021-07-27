@@ -24,3 +24,6 @@
 3. **Calculating Averages:**  A method that accepts an array of integers and calculates and returns the average of all the values in the array.
 
 4. **Arrays of Arrays:** We pass to this method an array of arrays , then it calculate the average value for each array and return the array with the lowest average.
+
+### 3. linter
+> This application read your JS files and if there any error caused by missing semicolon , it will till you in any line there is missing semicolon. So, make sure to add all the semicolons to your Js code.
