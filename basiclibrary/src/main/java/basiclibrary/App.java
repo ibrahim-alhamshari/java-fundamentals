@@ -4,9 +4,8 @@
 
  package basiclibrary;
 
- import java.io.File;
- import java.io.FileNotFoundException;
  import java.util.*;
+
 
  public class App {
      static String getGreeting() {
@@ -46,7 +45,8 @@
          votes.add("Shrub");
          votes.add("Bush");
          votes.add("Hedge");
-         votes.add("Bush");
+         votes.add("Hedge");
+         votes.add("Hedge");
 
          String winner = tally(votes);
          System.out.println(winner + " received the most votes!");
@@ -55,38 +55,33 @@
      //*******************************************************************
      public static String tally(List arr) {
 
-         // Create HashMap to store word and it's frequency
-         HashMap<String, Integer> names = new HashMap<String, Integer>();
+         Map<String,Integer> arrayOfVotes= new HashMap<>(); // Create HashMap to store word and it's frequency
 
-         // Iterate through array of words
-         for (int i = 0; i < arr.size(); i++) {
-             // If word already exist in HashMap then increase it's count by 1
-             if (names.containsKey(arr.get(i))) {
-                 names.put((String) arr.get(i), names.get(arr.get(i)) + 1);
-             }
-             // Otherwise add word to HashMap
-             else {
-                 names.put((String) arr.get(i), 1);
+         for (Object item : arr) { // Iterate through array of words
+             if(arrayOfVotes.containsKey(item)){
+             arrayOfVotes.put((String) item,arrayOfVotes.get(item)+1);
+             }else {
+                 arrayOfVotes.put((String) item,1);
              }
          }
 
-         // Create set to iterate over HashMap
-         Set<Map.Entry<String, Integer> > set = names.entrySet();
-         String key = "";
-         int value = 0;
+         String maxKey = "";
+         int maxValue = 0;
 
-         for (Map.Entry<String, Integer> me : set) {
-             // Check for word having highest frequency
-             if (me.getValue() > value) {
-                 value = me.getValue();
-                 key = me.getKey();
+         //Get the map key and Value one by one with the entrySet method
+         for (Map.Entry<String, Integer> stringIntegerEntry : arrayOfVotes.entrySet()) {
+             //Compare the maximum value and Value, and if Value is large, substitute the key and Value at that time.
+             if (stringIntegerEntry.getValue()>maxValue){
+                 maxKey=stringIntegerEntry.getKey();
+                 maxValue=stringIntegerEntry.getValue();
              }
          }
 
-         // Return word having highest frequency
-         return key;
+            // Return word having highest frequency
+            return  maxKey;
      }
-     //*******************************************************
+
+
         public static List<String> weatherData(int[][] arr){
             Set<Integer> set = new HashSet<Integer>();
             int minValue=arr[0][0];
