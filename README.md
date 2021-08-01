@@ -27,3 +27,15 @@
 
 ### 3. linter
 > This application read your JS files and if there any error caused by missing semicolon , it will till you in any line there is missing semicolon. So, make sure to add all the semicolons to your Js code.
+
+### 4. inheritance
+> This application enables you to add restaurants and enable you also to add reviews to each restaurant, the review contains your name and your feedback, and the rate to that restaurant.
+> I used the composition to make a relationship between the `Restaurant` class with the `Review` class without inheritance.
+> I inherited only the default method which is (toString() method).
+> Finally, I tested my functions on the part of testing by adding the inspected values with the running of the functions to ensure that I have the same results or not.
+
+
+
+
+<!-- paste this command there set `PATH=C:\Program Files\JetBrains\IntelliJ IDEA\bin`
+go to the project from Terminal and write `idea64.exe` inside your project -->
