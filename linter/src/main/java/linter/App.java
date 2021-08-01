@@ -20,10 +20,11 @@ public class App {
 
     public static void main(String[] args) {
 
-        String path= "resources/gates.js";
-        System.out.println(readFiles(path));
-
+//        String path= "resources/gates.js";
+//        System.out.println(readFiles(path));
+        
     }
+
 
     public static String readFiles(String pathPassed){
         StringBuilder holdErrors =new StringBuilder();
