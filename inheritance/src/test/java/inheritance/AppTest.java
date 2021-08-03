@@ -4,6 +4,9 @@
 package inheritance;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class AppTest {
@@ -36,4 +39,25 @@ public class AppTest {
         Review review = new Review(10,"Beautiful" , "Ali");
         assertEquals("Review{stars=5, body='Beautiful', author='Ali'}",review.toString() );
     }
+
+    @Test public void add_Remove_MovieTest(){
+        Theater theater =new Theater();
+        theater.addMovie("First World war");
+        theater.addMovie("Second World war");
+        ArrayList<String> listOfMovies = new ArrayList<String>();
+        listOfMovies.add("First World war");
+        listOfMovies.add("Second World war");
+        listOfMovies.add("Red world");
+        assertEquals(listOfMovies , theater.addMovie("Red world"));
+
+        listOfMovies.remove(1);
+        assertEquals(listOfMovies ,theater.removeMovie(1));
+    }
+
+    @Test public void TheaterMovie(){
+        Theater theater =new Theater();
+        assertEquals( "Review[stars: 1, body: good theater, author: NoorEdden]", theater.TheaterOnly(1,"good theater" , "NoorEdden"));
+        assertEquals( "Review[stars: 6, body: Very amazing, author: Kimon, movie: The Life]", theater.TheaterWithMovie(6,"Very amazing" , "Kimon" ,"The Life"));
+    }
+
 }

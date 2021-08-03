@@ -29,9 +29,10 @@
 > This application read your JS files and if there any error caused by missing semicolon , it will till you in any line there is missing semicolon. So, make sure to add all the semicolons to your Js code.
 
 ### 4. inheritance
-> This application enables you to add restaurants and enable you also to add reviews to each restaurant, the review contains your name and your feedback, and the rate to that restaurant.
-> I used the composition to make a relationship between the `Restaurant` class with the `Review` class without inheritance.
-> I inherited only the default method which is (toString() method).
+> This application enables you to add restaurants, Shops, Theaters(with a movies) and enable you also to add reviews to each of them, the review contains your name and your feedback, and the rate to that one. If you reviewing the theater you can include the movie name or not.
+
+> I used the composition to make a relationship between the `Restaurant` , `Shop` class with the `Review` class without inheritance. And the inheritance for the `Theater` class.
+
 > Finally, I tested my functions on the part of testing by adding the inspected values with the running of the functions to ensure that I have the same results or not.
 
 
