@@ -16,23 +16,9 @@ public class Restaurant {
 
     public void addReview(Review review){
         this.reviewLists.add(review);
-        System.out.println("bbbbbbbbbbb: "+reviewLists.size());
            i++;
           starsRating=starsRating+ review.getStars();
-            System.out.println("starsRating: "+starsRating);
-
-        System.out.println("rating: " + (float)(starsRating/i));
         this.stars= (float)(starsRating/i);
-    }
-
-
-    Restaurant(ArrayList<Review> reviewLists){
-       this.reviewLists=reviewLists;
-    }
-
-    public ArrayList<Review> getReviewLists() {
-//        System.out.println(reviewLists);
-        return reviewLists;
     }
 
     public Restaurant(String name, int stars, int price) {

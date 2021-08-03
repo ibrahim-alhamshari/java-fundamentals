@@ -8,6 +8,19 @@ public class Review{
      private int stars;
      private String body;
      private String author;
+     private String movie;
+     private Boolean flag=false;
+     public Review( int stars, String body, String author , String movie){
+          if(stars>5){
+               this.stars=5;
+          }else {
+               this.stars=stars;
+          }
+          this.body = body;
+          this.author = author;
+          this.movie= movie;
+          this.flag=true;
+     }
 
      public Review( int stars, String body, String author) {
           if(stars>5){
@@ -19,21 +32,9 @@ public class Review{
           this.author = author;
      }
 
-     public Review(List<Review> listOfReview) {
-          for (Review review : listOfReview) {
-               this.body = review.body;
-               this.author=review.author;
-               if(review.stars>5){
-                    this.stars=5;
-               }else {
-               this.stars=review.stars;
-               }
-          }
-     }
 
-     public int getStars(){
-          return stars;
-     }
+
+     public int getStars(){ return stars; }
 
      public String getBody(){
           return body;
@@ -46,10 +47,22 @@ public class Review{
 
      @Override
      public String toString() {
-          return "Review{" +
+          String results = "Review{" +
                   "stars=" + stars +
                   ", body='" + body + '\'' +
                   ", author='" + author + '\'' +
                   '}';
+          if (flag){
+             results= "Review{" +
+                      "stars=" + stars +
+                      ", body='" + body + '\'' +
+                      ", author='" + author + '\'' +
+                      ", movie='" + movie + '\'' +
+                      '}';
+             flag=false;
+          }
+          return results;
      }
+
+
 }
